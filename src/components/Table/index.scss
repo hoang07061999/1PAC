@@ -1,0 +1,124 @@
+@mixin ic-image($url: "", $width: 40px, $height: 40px) {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  transform-style: preserve-3d;
+  transition: transform 0.3s;
+  vertical-align: middle;
+  background-image: url($url);
+  height: $height;
+  width: $width;
+}
+
+.table {
+  overflow-x: auto;
+  width: 100%;
+  height: 70vh;
+  &_th {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    p{
+      margin: 0;
+    }
+
+    &-sort {
+      cursor: pointer;
+    }
+
+    &-first {
+      justify-content: flex-start;
+      padding-left: 15px;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
+
+    thead {
+      background-color: rgb(238, 231, 231);
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
+
+    tr {
+      min-width: 130px;
+      border-top: 1px solid rgba(0, 0, 0, 0.3);
+    }
+
+    th {
+      padding: 16px 0;
+      min-width: 140px;
+      @include mobile-down{
+        padding: 8px 0;
+      }
+      &:first-child {
+        text-align: left;
+      }
+    }
+
+    td {
+      min-width: 130px;
+      padding: 16px 5px;
+      @include mobile-down{
+        padding: 8px 5px;
+      }
+      &:first-child {
+        text-align: left;
+        padding-left: 10px;
+      }
+    }
+  }
+
+  thead {
+    tr {
+      border: 0;
+    }
+  }
+
+  &_iconSort {
+    @include ic-image("../../assets/icons/ic_polygon_black.svg", 24px, 24px);
+    &-active {
+      @include ic-image("../../assets/icons/ic_polygon_green.svg", 24px, 24px);
+    }
+  }
+
+  &_iconInfo {
+    @include ic-image("../../assets/icons/ic_info.svg");
+    &:hover {
+      @include ic-image("../../assets/icons/ic_info_hover.svg");
+    }
+  }
+
+  &_iconBookmark {
+    @include ic-image("../../assets/icons/ic_bookmark.svg");
+    &:hover {
+      @include ic-image("../../assets/icons/ic_bookmark_hover.svg");
+    }
+  }
+
+  &_iconBookmarked {
+    @include ic-image("../../assets/icons/ic_bookmark_hover.svg");
+  }
+
+  &_iconRemove {
+    @include ic-image("../../assets/icons/ic_remove.svg");
+    &:hover {
+      @include ic-image("../../assets/icons/ic_remove_hover.svg");
+    }
+  }
+
+  &_invalidDataText {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+  }
+}

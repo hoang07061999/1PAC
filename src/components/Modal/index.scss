@@ -1,0 +1,81 @@
+.o-modal {
+  $root: &;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  margin: 32px auto;
+  max-height: calc(100% - 64px);
+  max-width: 1024px;
+  position: relative;
+
+  @include tablet-down {
+    margin: 16px auto;
+    max-height: calc(100% - 32px);
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  &-container {
+    background-color: white;
+    overflow: auto;
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+
+    @include tablet-down {
+      margin: 0 auto;
+    }
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &-icon {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 2;
+
+    @include tablet-down {
+      right: 15px;
+      top: 15px;
+    }
+  }
+
+  &-portal {
+    opacity: 0;
+    position: relative;
+    transition: all 2s linear;
+    z-index: 99;
+  }
+
+  &-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99;
+  }
+  &-content {
+    padding: 30px;
+  }
+}
+
+.o-modal-portal-open {
+  opacity: 1;
+}
+
+.reactModal-body-open,
+.reactModal-html-open {
+  overflow: hidden;
+
+  @include desktop-up {
+    padding-right: 15px;
+  }
+}
